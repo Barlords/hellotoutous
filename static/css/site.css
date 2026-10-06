@@ -1,0 +1,89 @@
+:root {
+  --color-accent: #D46A54;
+  --color-bg-start: #FEA674;
+  --color-bg-end: #FEBC97;
+  --color-title: #6C4F3E;
+  --color-text: #3F2A22;
+  --color-navbar: #FFF6F0;
+  --color-on-accent: #ffffff;
+  --color-frame: #C4A574;
+  --font-title: "Fraunces", Georgia, serif;
+  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  background: linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end));
+}
+
+h1, h2, h3 {
+  font-family: var(--font-title);
+  color: var(--color-title);
+  font-weight: 560;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-title);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--color-navbar);
+  color: var(--color-title);
+  padding: 0.5rem 1rem;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+  z-index: 20;
+}
+
+.button {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-body);
+  font-weight: 700;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+}
+
+.button[aria-busy="true"] {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
