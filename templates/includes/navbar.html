@@ -1,4 +1,14 @@
+{% load static %}
 <header class="navbar">
+  <a class="navbar__brand" href="{% url 'home' %}">
+    <img
+      class="navbar__logo"
+      src="{% static 'img/brand_noborder.png' %}"
+      alt="HELLO TOUTOUS, BOUTIQUE D'ACCESSOIRES POUR CHIENS"
+      width="632"
+      height="316"
+    >
+  </a>
   <nav class="navbar__links" aria-label="Navigation principale">
     <a href="{% url 'shop' %}">Boutique</a>
     <a href="{% url 'home' %}#notre-histoire">Notre histoire</a>
@@ -7,6 +17,10 @@
     <a href="{% url 'home' %}#contact">Contact</a>
   </nav>
   <a class="navbar__cart" href="{% url 'cart' %}" aria-live="polite">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M6 7h12l-1 12H7L6 7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9 7V6a3 3 0 0 1 6 0v1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
     Panier ({{ cart_item_count }})
   </a>
 </header>

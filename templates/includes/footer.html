@@ -1,6 +1,39 @@
 <footer class="footer">
-  <h2>Me contacter</h2>
-  <p><a href="tel:+33646565420">06 46 56 54 20</a></p>
-  <p><a href="mailto:hellotoutous@hotmail.com">hellotoutous@hotmail.com</a></p>
-  <p>© Company 2026</p>
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <p class="footer__wordmark">Hello Toutous</p>
+      <p>Accessoires canins imaginés et confectionnés à la main, un modèle à la fois.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Pied de page">
+      <h2>Explorer</h2>
+      <a href="{% url 'shop' %}">Boutique</a>
+      <a href="{% url 'home' %}#notre-histoire">Notre histoire</a>
+      <a href="{% url 'size_guide' %}">Guide des tailles</a>
+      <a href="{% url 'gallery' %}">Galerie</a>
+      <a href="{% url 'home' %}#contact">Contact</a>
+    </nav>
+    <div class="footer__contact">
+      <h2>Me contacter</h2>
+      <p>
+        <a href="tel:+33646565420">
+          <svg class="footer__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7.2 3.8h2.2l1.2 3-1.5 1a12.4 12.4 0 0 0 6.1 6.1l1-1.5 3 1.2v2.2c0 .7-.5 1.3-1.2 1.4A16.2 16.2 0 0 1 5.8 5c.1-.7.7-1.2 1.4-1.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          06 46 56 54 20
+        </a>
+      </p>
+      <p>
+        <a href="mailto:hellotoutous@hotmail.com">
+          <svg class="footer__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3.5" y="5.5" width="17" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <path d="m4.5 7 7.5 6L19.5 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          hellotoutous@hotmail.com
+        </a>
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <p class="footer__legal">© Company 2026</p>
+  </div>
 </footer>

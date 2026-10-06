@@ -7,110 +7,242 @@
   <section class="hero" aria-label="Hello Toutous">
     <div class="hero__photo">
       <img
-        class="hero__brand"
-        src="{% static 'img/brand.png' %}"
-        alt="HELLO TOUTOUS, BOUTIQUE D'ACCESSOIRES POUR CHIENS"
-        width="896"
-        height="475"
+        class="hero__image"
+        src="{% static 'img/hero.jpeg' %}"
+        alt="Famille et chiens en promenade, avec des accessoires fleuris"
+        width="1024"
+        height="1024"
+        fetchpriority="high"
       >
+      <div class="hero__content">
+        <p class="eyebrow">Fait main en France</p>
+        <h1>Le beau, pour chaque promenade</h1>
+        <p>Des pièces uniques, imaginées et cousues à la demande.</p>
+        <a class="button" href="{% url 'shop' %}">Entrer dans la boutique</a>
+      </div>
     </div>
     <div class="marquee">
       <div class="marquee__track">
-        <span>Délais de fabrication 2 à 4 semaines</span>
-        <span>Livraison offerte à partir de 150€ d'achat</span>
-        <span aria-hidden="true">Délais de fabrication 2 à 4 semaines</span>
-        <span aria-hidden="true">Livraison offerte à partir de 150€ d'achat</span>
+        <div class="marquee__group">
+          <span>Délais de fabrication 2 à 4 semaines</span>
+          <span>Livraison offerte à partir de 150€ d'achat</span>
+          <span aria-hidden="true">Délais de fabrication 2 à 4 semaines</span>
+          <span aria-hidden="true">Livraison offerte à partir de 150€ d'achat</span>
+          <span aria-hidden="true">Délais de fabrication 2 à 4 semaines</span>
+          <span aria-hidden="true">Livraison offerte à partir de 150€ d'achat</span>
+          <span aria-hidden="true">Délais de fabrication 2 à 4 semaines</span>
+          <span aria-hidden="true">Livraison offerte à partir de 150€ d'achat</span>
+        </div>
+        <div class="marquee__group" aria-hidden="true">
+          <span>Délais de fabrication 2 à 4 semaines</span>
+          <span>Livraison offerte à partir de 150€ d'achat</span>
+          <span>Délais de fabrication 2 à 4 semaines</span>
+          <span>Livraison offerte à partir de 150€ d'achat</span>
+          <span>Délais de fabrication 2 à 4 semaines</span>
+          <span>Livraison offerte à partir de 150€ d'achat</span>
+          <span>Délais de fabrication 2 à 4 semaines</span>
+          <span>Livraison offerte à partir de 150€ d'achat</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="split">
-    <div>
-      <p>HELLO TOUTOUS vous propose des accessoires canins entièrement confectionnés à la main prêts à vous accompagner dans toutes vos aventures. Optez pour le style et le savoir-faire français.</p>
-      <p>Nos colliers, laisses, harnais et autres accessoires n'attendent que vous !</p>
-    </div>
-    <div class="carousel" data-carousel>
-      <button type="button" class="button" data-carousel-prev>Photo précédente</button>
-      <div class="carousel__slides">
-        <p data-slide>Photo à venir 1</p>
-        <p data-slide hidden>Photo à venir 2</p>
-        <p data-slide hidden>Photo à venir 3</p>
+  <section class="intro">
+    <div class="container intro__grid">
+      <div class="intro__copy">
+        <p class="eyebrow">L'atelier</p>
+        <h2>Un style français, cousu pour eux</h2>
+        <p>HELLO TOUTOUS vous propose des accessoires canins entièrement confectionnés à la main prêts à vous accompagner dans toutes vos aventures. Optez pour le style et le savoir-faire français.</p>
+        <p>Nos colliers, laisses, harnais et autres accessoires n'attendent que vous !</p>
       </div>
-      <button type="button" class="button" data-carousel-next>Photo suivante</button>
+      <div class="carousel" data-carousel>
+        <div class="carousel__viewport">
+          <div class="carousel__slides">
+            <figure class="carousel__slide" data-slide>
+              <img src="{% static 'img/accessory/collier.png' %}" alt="Pièce fleurie avec boucle et anneau métal" width="1024" height="1024">
+            </figure>
+            <figure class="carousel__slide" data-slide hidden>
+              <img src="{% static 'img/accessory/harnais.png' %}" alt="Harnais fleuri présenté de face" width="1024" height="1024">
+            </figure>
+            <figure class="carousel__slide" data-slide hidden>
+              <img src="{% static 'img/accessory/laisse.png' %}" alt="Laisse fleurie enroulée, avec mousqueton" width="1024" height="1024">
+            </figure>
+            <figure class="carousel__slide" data-slide hidden>
+              <img src="{% static 'img/accessory/bandana.png' %}" alt="Chien portant un accessoire fleuri" width="896" height="1200">
+            </figure>
+            <figure class="carousel__slide" data-slide hidden>
+              <img src="{% static 'img/accessory/distributeur.png' %}" alt="Étui fleuri accroché à une sangle" width="1024" height="1024">
+            </figure>
+            <figure class="carousel__slide" data-slide hidden>
+              <img src="{% static 'img/accessory/sacafriandise.png' %}" alt="Pochon bicolore moutarde et tissu fleuri" width="1024" height="1024">
+            </figure>
+            <figure class="carousel__slide" data-slide hidden>
+              <img src="{% static 'img/accessory/noeud.png' %}" alt="Boucle fleurie en tissu" width="1024" height="1024">
+            </figure>
+          </div>
+          <div class="carousel__progress" data-carousel-progress aria-hidden="true">
+            <span></span>
+          </div>
+          <button type="button" class="carousel__control carousel__control--prev" data-carousel-prev>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="visually-hidden">Photo précédente</span>
+          </button>
+          <button type="button" class="carousel__control carousel__control--next" data-carousel-next>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="visually-hidden">Photo suivante</span>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="band">
+    <span class="band__dot" aria-hidden="true"></span>
+    <p class="band__title">La collection</p>
+    <span class="band__dot" aria-hidden="true"></span>
+  </div>
 
   <section class="categories" aria-labelledby="accessoires-titre">
-    <h2 id="accessoires-titre">Accessoires</h2>
-    <ul>
-      {% for category in categories %}
-        <li><a href="{% url 'category' category_code=category.code %}">{{ category.label }}</a></li>
-      {% endfor %}
-    </ul>
-    <div class="split">
-      <div>
-        <h3>Livraison dans le monde</h3>
-        <p>HELLO TOUTOUS vous livre dans le monde entier. Les délais de confection sont actuellement de 2 à 4 semaines. La livraison est offerte dès 150€ d'achat en France métropolitaine !</p>
-      </div>
-      <div>
-        <h3>Qualité &amp; originalité</h3>
-        <p>Les créations HELLO TOUTOUS sont exclusives. J'apporte un soin particulier aux finitions. Chaque modèle est unique et créé uniquement pour vous, à votre demande.</p>
-      </div>
+    <div class="container">
+      <header class="section-head">
+        <div>
+          <div class="section-head__row">
+            <h2 id="accessoires-titre">Accessoires</h2>
+            <ul class="keyword-tags">
+              <li>Pratique</li>
+              <li>Imperméable</li>
+              <li>Personnalisable</li>
+            </ul>
+          </div>
+        </div>
+        <a class="text-link" href="{% url 'shop' %}">Toute la boutique</a>
+      </header>
+      <ul class="category-grid">
+        {% for category in categories %}
+          <li>
+            <a class="category-card" href="{% url 'category' category_code=category.code %}">
+              <span class="category-card__media">
+                {% if category.presentation_image %}
+                  <img src="{% static category.presentation_image %}" alt="" width="1024" height="1024">
+                {% endif %}
+              </span>
+              <span class="category-card__meta">
+                <span class="category-card__label">{{ category.label }}</span>
+                <span class="category-card__cta">Découvrir</span>
+              </span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
   </section>
 
-  <section class="split" id="notre-histoire">
-    <div>
+  <div class="band">
+    <span class="band__dot" aria-hidden="true"></span>
+    <p class="band__title">Points forts</p>
+    <span class="band__dot" aria-hidden="true"></span>
+  </div>
+
+  <section class="promises">
+    <div class="container promises__grid">
+      <article class="promise">
+        <span class="promise__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="17.5" r="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="17.5" r="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <h3>Livraison dans le monde</h3>
+        <p>HELLO TOUTOUS vous livre dans le monde entier. Les délais de confection sont actuellement de 2 à 4 semaines. La livraison est offerte dès 150€ d'achat en France métropolitaine !</p>
+      </article>
+      <article class="promise">
+        <span class="promise__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3.5 14.2 9l5.8.4-4.5 3.8 1.4 5.6L12 16.2 7.1 18.8 8.5 13.2 4 9.4 9.8 9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Qualité &amp; originalité</h3>
+        <p>Les créations HELLO TOUTOUS sont exclusives. J'apporte un soin particulier aux finitions. Chaque modèle est unique et créé uniquement pour vous, à votre demande.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="band">
+    <span class="band__dot" aria-hidden="true"></span>
+    <p class="band__title">La fondatrice</p>
+    <span class="band__dot" aria-hidden="true"></span>
+  </div>
+
+  <section class="story" id="notre-histoire">
+    <div class="story__media">
+      <img src="{% static 'img/fondator.jpg' %}" alt="Blandine à sa machine à coudre" width="1024" height="981">
+    </div>
+    <div class="story__copy">
       <h2>QUI SE CACHE DERRIERE HELLO TOUTOUS ?</h2>
-      <p>C’est moi, Blandine</p>
+      <p class="story__lead">C’est moi, Blandine</p>
       <p>Passionnée de couture et ancienne maroquinière,</p>
       <p>j’ai créé HELLO TOUTOUS avec l’envie de mettre mon savoir-faire au service de nos compagnons à quatre pattes.</p>
       <p>Chaque accessoire est imaginé, confectionné et personnalisé à la main dans mon atelier parisien.</p>
     </div>
-    <p class="placeholder">Photo de Blandine dans son atelier, à venir</p>
   </section>
 
-  <section id="contact">
-    <h2>A votre écoute</h2>
-    <p>J'accorde beaucoup d'importance à votre confort et à votre tranquillité. N'hésitez pas à me contacter si vous avez la moindre question et je vous répondrai rapidement par mail, telephone ainsi que sur Instagram.</p>
-    <h3>Envie d'un accessoire sur-mesure ? Contacte-moi !</h3>
-    {% if contact_success %}
-      <p role="status">Votre message a bien été envoyé.</p>
-    {% endif %}
-    <form method="post" action="{% url 'contact_submit' %}" novalidate>
-      {% csrf_token %}
-      <input type="hidden" name="form_token" value="{{ contact_token }}">
-      {% if form.non_field_errors %}
-        <div role="alert">
-          {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+  <div class="band">
+    <span class="band__dot" aria-hidden="true"></span>
+    <p class="band__title">Contact</p>
+    <span class="band__dot" aria-hidden="true"></span>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="container contact__grid">
+      <div class="contact__intro">
+        <h2>A votre écoute</h2>
+        <p>J'accorde beaucoup d'importance à votre confort et à votre tranquillité. N'hésitez pas à me contacter si vous avez la moindre question et je vous répondrai rapidement par mail, telephone ainsi que sur Instagram.</p>
+        <h3>Envie d'un accessoire sur-mesure ? Contactez-moi !</h3>
+      </div>
+      <form class="contact__form" method="post" action="{% url 'contact_submit' %}" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="form_token" value="{{ contact_token }}">
+        {% if contact_success %}
+          <p class="form-status" role="status">Votre message a bien été envoyé.</p>
+        {% endif %}
+        {% if form.non_field_errors %}
+          <div role="alert">
+            {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="field">
+          <label for="{{ form.name.id_for_label }}">Nom</label>
+          <input id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" type="text" autocomplete="name" value="{{ form.name.value|default:'' }}" {% if form.name.errors %}aria-invalid="true" aria-describedby="error-name" autofocus{% endif %}>
+          {% if form.name.errors %}<p class="field-error" id="error-name" role="alert">{{ form.name.errors.0 }}</p>{% endif %}
         </div>
-      {% endif %}
-      <label for="{{ form.name.id_for_label }}">Nom</label>
-      <input id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" type="text" autocomplete="name" value="{{ form.name.value|default:'' }}" {% if form.name.errors %}aria-invalid="true" aria-describedby="error-name" autofocus{% endif %}>
-      {% if form.name.errors %}<p id="error-name" role="alert">{{ form.name.errors.0 }}</p>{% endif %}
 
-      <label for="{{ form.email.id_for_label }}">Courriel</label>
-      <input id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" type="email" autocomplete="email" value="{{ form.email.value|default:'' }}" {% if form.email.errors %}aria-invalid="true" aria-describedby="error-email" autofocus{% endif %}>
-      {% if form.email.errors %}<p id="error-email" role="alert">{{ form.email.errors.0 }}</p>{% endif %}
+        <div class="field">
+          <label for="{{ form.city.id_for_label }}">Ville</label>
+          <input id="{{ form.city.id_for_label }}" name="{{ form.city.html_name }}" type="text" autocomplete="address-level2" value="{{ form.city.value|default:'' }}" {% if form.city.errors %}aria-invalid="true" aria-describedby="error-city" autofocus{% endif %}>
+          {% if form.city.errors %}<p class="field-error" id="error-city" role="alert">{{ form.city.errors.0 }}</p>{% endif %}
+        </div>
 
-      <label for="{{ form.city.id_for_label }}">Ville</label>
-      <input id="{{ form.city.id_for_label }}" name="{{ form.city.html_name }}" type="text" autocomplete="address-level2" value="{{ form.city.value|default:'' }}" {% if form.city.errors %}aria-invalid="true" aria-describedby="error-city" autofocus{% endif %}>
-      {% if form.city.errors %}<p id="error-city" role="alert">{{ form.city.errors.0 }}</p>{% endif %}
+        <div class="field field--full">
+          <label for="{{ form.email.id_for_label }}">Courriel</label>
+          <input id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" type="email" autocomplete="email" value="{{ form.email.value|default:'' }}" {% if form.email.errors %}aria-invalid="true" aria-describedby="error-email" autofocus{% endif %}>
+          {% if form.email.errors %}<p class="field-error" id="error-email" role="alert">{{ form.email.errors.0 }}</p>{% endif %}
+        </div>
 
-      <label for="{{ form.category.id_for_label }}">Catégorie du message</label>
-      <select id="{{ form.category.id_for_label }}" name="{{ form.category.html_name }}" {% if form.category.errors %}aria-invalid="true" aria-describedby="error-category" autofocus{% endif %}>
-        {% for value, label in form.category.field.choices %}
-          <option value="{{ value }}" {% if form.category.value == value %}selected{% endif %}>{{ label }}</option>
-        {% endfor %}
-      </select>
-      {% if form.category.errors %}<p id="error-category" role="alert">{{ form.category.errors.0 }}</p>{% endif %}
+        <div class="field field--full">
+          <label for="{{ form.category.id_for_label }}">Catégorie du message</label>
+          <select id="{{ form.category.id_for_label }}" name="{{ form.category.html_name }}" {% if form.category.errors %}aria-invalid="true" aria-describedby="error-category" autofocus{% endif %}>
+            {% for value, label in form.category.field.choices %}
+              <option value="{{ value }}" {% if form.category.value == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+          </select>
+          {% if form.category.errors %}<p class="field-error" id="error-category" role="alert">{{ form.category.errors.0 }}</p>{% endif %}
+        </div>
 
-      <label for="{{ form.message.id_for_label }}">Message</label>
-      <textarea id="{{ form.message.id_for_label }}" name="{{ form.message.html_name }}" rows="6" {% if form.message.errors %}aria-invalid="true" aria-describedby="error-message" autofocus{% endif %}>{{ form.message.value|default:'' }}</textarea>
-      {% if form.message.errors %}<p id="error-message" role="alert">{{ form.message.errors.0 }}</p>{% endif %}
+        <div class="field field--full">
+          <label for="{{ form.message.id_for_label }}">Message</label>
+          <textarea id="{{ form.message.id_for_label }}" name="{{ form.message.html_name }}" rows="6" {% if form.message.errors %}aria-invalid="true" aria-describedby="error-message" autofocus{% endif %}>{{ form.message.value|default:'' }}</textarea>
+          {% if form.message.errors %}<p class="field-error" id="error-message" role="alert">{{ form.message.errors.0 }}</p>{% endif %}
+        </div>
 
-      <button class="button" type="submit">Envoyer</button>
-    </form>
+        <button class="button" type="submit">Envoyer</button>
+      </form>
+    </div>
   </section>
   <script src="{% static 'js/carousel.js' %}"></script>
 {% endblock %}
