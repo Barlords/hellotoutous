@@ -791,18 +791,20 @@ textarea:hover {
   border-bottom: 1px solid rgba(255, 246, 240, 0.16);
 }
 
-.footer__wordmark {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-title);
-  font-size: 1.85rem;
-  color: #fff;
-  letter-spacing: -0.02em;
+/* Crop brand.png (896×475) to the mark, which sits at x=120, y=88, 670×306. */
+.footer__brand {
+  width: min(100%, 22rem);
+  aspect-ratio: 670 / 306;
+  overflow: hidden;
 }
 
-.footer__brand p:last-child {
-  max-width: 22rem;
-  margin: 0;
-  color: rgba(255, 246, 240, 0.82);
+.footer__logo {
+  display: block;
+  width: calc(100% * 896 / 670);
+  max-width: none;
+  height: auto;
+  margin-left: calc(-100% * 120 / 670);
+  margin-top: calc(-100% * 88 / 670);
 }
 
 .footer__nav {
