@@ -23,10 +23,11 @@
   }
 
   function play() {
-    if (reduce) {
+    var paused = reduce || root.matches(":hover") || root.contains(document.activeElement);
+    stop();
+    if (paused) {
       return;
     }
-    stop();
     timer = window.setInterval(function () {
       show(index + 1);
     }, 4000);
