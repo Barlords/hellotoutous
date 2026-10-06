@@ -1,0 +1,12 @@
+<header class="navbar">
+  <nav class="navbar__links" aria-label="Navigation principale">
+    <a href="{% url 'shop' %}">Boutique</a>
+    <a href="{% url 'home' %}#notre-histoire">Notre histoire</a>
+    <a href="{% url 'size_guide' %}">Guide des tailles</a>
+    <a href="{% url 'gallery' %}">Galerie</a>
+    <a href="{% url 'home' %}#contact">Contact</a>
+  </nav>
+  <a class="navbar__cart" href="{% url 'cart' %}" aria-live="polite">
+    Panier ({{ cart_item_count }})
+  </a>
+</header>
