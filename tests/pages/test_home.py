@@ -9,6 +9,7 @@ def test_home_renders_the_five_sections_in_order(client):
     html = client.get("/").content.decode()
 
     markers = [
+        "img/brand.png",
         "HELLO TOUTOUS",
         "BOUTIQUE D'ACCESSOIRES POUR CHIENS",
         "Délais de fabrication 2 à 4 semaines",

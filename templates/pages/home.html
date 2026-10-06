@@ -6,11 +6,13 @@
 {% block content %}
   <section class="hero" aria-label="Hello Toutous">
     <div class="hero__photo">
-      <div class="hero__card">
-        <p class="hero__paw" aria-hidden="true">&#128062;</p>
-        <p class="hero__name">HELLO TOUTOUS</p>
-        <p class="hero__tag">BOUTIQUE D'ACCESSOIRES POUR CHIENS</p>
-      </div>
+      <img
+        class="hero__brand"
+        src="{% static 'img/brand.png' %}"
+        alt="HELLO TOUTOUS, BOUTIQUE D'ACCESSOIRES POUR CHIENS"
+        width="896"
+        height="475"
+      >
     </div>
     <div class="marquee">
       <div class="marquee__track">
@@ -72,6 +74,43 @@
     <h2>A votre écoute</h2>
     <p>J'accorde beaucoup d'importance à votre confort et à votre tranquillité. N'hésitez pas à me contacter si vous avez la moindre question et je vous répondrai rapidement par mail, telephone ainsi que sur Instagram.</p>
     <h3>Envie d'un accessoire sur-mesure ? Contacte-moi !</h3>
+    {% if contact_success %}
+      <p role="status">Votre message a bien été envoyé.</p>
+    {% endif %}
+    <form method="post" action="{% url 'contact_submit' %}" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="form_token" value="{{ contact_token }}">
+      {% if form.non_field_errors %}
+        <div role="alert">
+          {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+        </div>
+      {% endif %}
+      <label for="{{ form.name.id_for_label }}">Nom</label>
+      <input id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" type="text" autocomplete="name" value="{{ form.name.value|default:'' }}" {% if form.name.errors %}aria-invalid="true" aria-describedby="error-name" autofocus{% endif %}>
+      {% if form.name.errors %}<p id="error-name" role="alert">{{ form.name.errors.0 }}</p>{% endif %}
+
+      <label for="{{ form.email.id_for_label }}">Courriel</label>
+      <input id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" type="email" autocomplete="email" value="{{ form.email.value|default:'' }}" {% if form.email.errors %}aria-invalid="true" aria-describedby="error-email" autofocus{% endif %}>
+      {% if form.email.errors %}<p id="error-email" role="alert">{{ form.email.errors.0 }}</p>{% endif %}
+
+      <label for="{{ form.city.id_for_label }}">Ville</label>
+      <input id="{{ form.city.id_for_label }}" name="{{ form.city.html_name }}" type="text" autocomplete="address-level2" value="{{ form.city.value|default:'' }}" {% if form.city.errors %}aria-invalid="true" aria-describedby="error-city" autofocus{% endif %}>
+      {% if form.city.errors %}<p id="error-city" role="alert">{{ form.city.errors.0 }}</p>{% endif %}
+
+      <label for="{{ form.category.id_for_label }}">Catégorie du message</label>
+      <select id="{{ form.category.id_for_label }}" name="{{ form.category.html_name }}" {% if form.category.errors %}aria-invalid="true" aria-describedby="error-category" autofocus{% endif %}>
+        {% for value, label in form.category.field.choices %}
+          <option value="{{ value }}" {% if form.category.value == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      {% if form.category.errors %}<p id="error-category" role="alert">{{ form.category.errors.0 }}</p>{% endif %}
+
+      <label for="{{ form.message.id_for_label }}">Message</label>
+      <textarea id="{{ form.message.id_for_label }}" name="{{ form.message.html_name }}" rows="6" {% if form.message.errors %}aria-invalid="true" aria-describedby="error-message" autofocus{% endif %}>{{ form.message.value|default:'' }}</textarea>
+      {% if form.message.errors %}<p id="error-message" role="alert">{{ form.message.errors.0 }}</p>{% endif %}
+
+      <button class="button" type="submit">Envoyer</button>
+    </form>
   </section>
   <script src="{% static 'js/carousel.js' %}"></script>
 {% endblock %}
