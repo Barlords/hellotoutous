@@ -1,0 +1,26 @@
+[project]
+name = "hellotoutous"
+version = "0.1.0"
+description = "Hello Toutous storefront"
+requires-python = ">=3.12"
+dependencies = [
+  "django>=5.2,<5.3",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3",
+  "pytest-django>=4.11",
+  "ruff>=0.12",
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
