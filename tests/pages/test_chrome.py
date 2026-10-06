@@ -10,11 +10,14 @@ def test_navbar_order_and_footer_are_on_every_placeholder(client):
     html = response.content.decode()
 
     assert response.status_code == 200
-    boutique = html.index("Boutique")
-    histoire = html.index("Notre histoire")
-    tailles = html.index("Guide des tailles")
-    galerie = html.index("Galerie")
-    contact = html.index("Contact")
+    nav_start = html.index("<nav")
+    nav_end = html.index("</nav>", nav_start) + len("</nav>")
+    nav = html[nav_start:nav_end]
+    boutique = nav.index("Boutique")
+    histoire = nav.index("Notre histoire")
+    tailles = nav.index("Guide des tailles")
+    galerie = nav.index("Galerie")
+    contact = nav.index("Contact")
     assert boutique < histoire < tailles < galerie < contact
     assert 'href="/#notre-histoire"' in html
     assert 'href="/#contact"' in html
