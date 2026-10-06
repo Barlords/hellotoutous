@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+  <section class="hero" aria-label="Hello Toutous">
+    <div class="hero__photo">
+      <div class="hero__card">
+        <p class="hero__paw" aria-hidden="true">&#128062;</p>
+        <p class="hero__name">HELLO TOUTOUS</p>
+        <p class="hero__tag">BOUTIQUE D'ACCESSOIRES POUR CHIENS</p>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="marquee__track">
+        <span>Délais de fabrication 2 à 4 semaines</span>
+        <span>Livraison offerte à partir de 150€ d'achat</span>
+        <span aria-hidden="true">Délais de fabrication 2 à 4 semaines</span>
+        <span aria-hidden="true">Livraison offerte à partir de 150€ d'achat</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="split">
+    <div>
+      <p>HELLO TOUTOUS vous propose des accessoires canins entièrement confectionnés à la main prêts à vous accompagner dans toutes vos aventures. Optez pour le style et le savoir-faire français.</p>
+      <p>Nos colliers, laisses, harnais et autres accessoires n'attendent que vous !</p>
+    </div>
+    <div class="carousel" data-carousel>
+      <button type="button" class="button" data-carousel-prev>Photo précédente</button>
+      <div class="carousel__slides">
+        <p data-slide>Photo à venir 1</p>
+        <p data-slide hidden>Photo à venir 2</p>
+        <p data-slide hidden>Photo à venir 3</p>
+      </div>
+      <button type="button" class="button" data-carousel-next>Photo suivante</button>
+    </div>
+  </section>
+
+  <section class="categories" aria-labelledby="accessoires-titre">
+    <h2 id="accessoires-titre">Accessoires</h2>
+    <ul>
+      {% for category in categories %}
+        <li><a href="{% url 'category' category_code=category.code %}">{{ category.label }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="split">
+      <div>
+        <h3>Livraison dans le monde</h3>
+        <p>HELLO TOUTOUS vous livre dans le monde entier. Les délais de confection sont actuellement de 2 à 4 semaines. La livraison est offerte dès 150€ d'achat en France métropolitaine !</p>
+      </div>
+      <div>
+        <h3>Qualité &amp; originalité</h3>
+        <p>Les créations HELLO TOUTOUS sont exclusives. J'apporte un soin particulier aux finitions. Chaque modèle est unique et créé uniquement pour vous, à votre demande.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="split" id="notre-histoire">
+    <div>
+      <h2>QUI SE CACHE DERRIERE HELLO TOUTOUS ?</h2>
+      <p>C’est moi, Blandine</p>
+      <p>Passionnée de couture et ancienne maroquinière,</p>
+      <p>j’ai créé HELLO TOUTOUS avec l’envie de mettre mon savoir-faire au service de nos compagnons à quatre pattes.</p>
+      <p>Chaque accessoire est imaginé, confectionné et personnalisé à la main dans mon atelier parisien.</p>
+    </div>
+    <p class="placeholder">Photo de Blandine dans son atelier, à venir</p>
+  </section>
+
+  <section id="contact">
+    <h2>A votre écoute</h2>
+    <p>J'accorde beaucoup d'importance à votre confort et à votre tranquillité. N'hésitez pas à me contacter si vous avez la moindre question et je vous répondrai rapidement par mail, telephone ainsi que sur Instagram.</p>
+    <h3>Envie d'un accessoire sur-mesure ? Contacte-moi !</h3>
+  </section>
+  <script src="{% static 'js/carousel.js' %}"></script>
+{% endblock %}

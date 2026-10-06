@@ -1,9 +1,9 @@
 from django.urls import path
 
-from pages.views import coming_soon
+from pages.views import coming_soon, home
 
 urlpatterns = [
-    path("", coming_soon, {"page_title": "Accueil"}, name="home"),
+    path("", home, name="home"),
     path("boutique/", coming_soon, {"page_title": "Boutique"}, name="shop"),
     path(
         "boutique/<slug:category_code>/",
