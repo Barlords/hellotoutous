@@ -1,10 +1,47 @@
 import os
+import sys
 from pathlib import Path
+
+import dj_database_url
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-only-hello-toutous")
-DEBUG = os.environ.get("DJANGO_DEBUG", "1") == "1"
+# A filled .env supplies local variables. Pytest must not read it, so a
+# developer DATABASE_URL cannot redirect the test suite to Postgres.
+if "pytest" not in sys.modules:
+    load_dotenv(BASE_DIR / ".env")
+
+
+def _env(name: str, default: str) -> str:
+    value = os.environ.get(name, "").strip()
+    return value or default
+
+
+def database_from_url(database_url: str) -> dict:
+    """Return Django database settings parsed from a PostgreSQL URL."""
+    return dj_database_url.parse(
+        database_url,
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+
+
+def _default_database() -> dict:
+    if "pytest" in sys.modules:
+        database_url = ""
+    else:
+        database_url = _env("DATABASE_URL", "")
+    if not database_url:
+        return {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    return database_from_url(database_url)
+
+
+SECRET_KEY = _env("DJANGO_SECRET_KEY", "dev-only-hello-toutous")
+DEBUG = _env("DJANGO_DEBUG", "1") == "1"
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 INSTALLED_APPS = [
@@ -50,12 +87,7 @@ TEMPLATES = [
     },
 ]
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+DATABASES = {"default": _default_database()}
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
@@ -74,6 +106,24 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CONTACT_RECIPIENT_EMAIL = "hellotoutous@hotmail.com"
-DEFAULT_FROM_EMAIL = "hellotoutous@hotmail.com"
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+CONTACT_RECIPIENT_EMAIL = _env("DJANGO_CONTACT_RECIPIENT_EMAIL", "hellotoutous@barlords.fr")
+DEFAULT_FROM_EMAIL = _env("DJANGO_DEFAULT_FROM_EMAIL", "hellotoutous@barlords.fr")
+EMAIL_HOST = _env("DJANGO_EMAIL_HOST", "ssl0.ovh.net")
+EMAIL_PORT = int(_env("DJANGO_EMAIL_PORT", "587"))
+EMAIL_HOST_USER = _env("DJANGO_EMAIL_HOST_USER", "hellotoutous@barlords.fr")
+EMAIL_HOST_PASSWORD = _env("DJANGO_EMAIL_HOST_PASSWORD", "")
+EMAIL_USE_TLS = _env("DJANGO_EMAIL_USE_TLS", "1") == "1"
+# An empty host keeps messages in the process logs. Tests never load .env.
+EMAIL_BACKEND = (
+    "django.core.mail.backends.smtp.EmailBackend"
+    if EMAIL_HOST
+    else "django.core.mail.backends.console.EmailBackend"
+)
+
+# Public bucket URL. Credentials stay empty until they are provided.
+OVH_S3_ENDPOINT_URL = _env(
+    "OVH_S3_ENDPOINT_URL",
+    "https://hellotoutous-bucket.s3.rbx.io.cloud.ovh.net",
+)
+OVH_S3_ACCESS_KEY_ID = _env("OVH_S3_ACCESS_KEY_ID", "")
+OVH_S3_SECRET_ACCESS_KEY = _env("OVH_S3_SECRET_ACCESS_KEY", "")

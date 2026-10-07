@@ -28,10 +28,10 @@ def test_navbar_order_and_footer_are_on_every_placeholder(client):
     assert "Panier (0)" in html
     assert "06 46 56 54 20" in html
     assert "tel:+33646565420" in html
-    assert "hellotoutous@hotmail.com" in html
+    assert "hellotoutous@barlords.fr" in html
     assert "© Company 2026" in html
     assert "Cette page arrive dans une prochaine itération." in html
-    assert 'href="mailto:hellotoutous@hotmail.com"' in html
+    assert 'href="mailto:hellotoutous@barlords.fr"' in html
 
 
 def test_cart_count_follows_the_session(client):
